@@ -8,6 +8,7 @@ class CanonicalExtension extends DataExtension {
     public function updateCMSFields(FieldList $fields) {
 		$MetaToggle = $fields->fieldByName("Root.Main.Metadata");
 		$MetaToggle->push($MetaCanonical = TextField::create("CanonicalURL", _t("Canonical.LinkOverride","Canonical URL - Override your own URL")));
+		$MetaCanonical->setAttribute('placeholder', $this->getorsetCanonicalURL());
     }
 
 	function getorsetCanonicalURL() {
@@ -18,7 +19,7 @@ class CanonicalExtension extends DataExtension {
 		} elseif ($siteConfig->CanonicalDomain != '') {
 			// if a global CanonicalDomain is set
 			$canonicalBase = trim($siteConfig->CanonicalDomain, '/');
-			$link = Director::protocol() . $canonicalBase . $this->owner->Link();
+			$link = $canonicalBase . $this->owner->Link();
 		} elseif (method_exists($this->owner, 'CanonicalLink')) {
 			// if something dynamic
 			$link = $this->owner->CanonicalLink();
