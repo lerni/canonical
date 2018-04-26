@@ -1,0 +1,23 @@
+{
+ "name": "lerni/silverstripe-canonical",
+ "description": "A SilverStripe module to add canonical tag in SilverStripe 3",
+ "license": "BSD-3-Clause",
+ "type": "silverstripe-module",
+ "homepage": "https://github.com/lerni/silverstripe-canonical",
+ "keywords": ["silverstripe", "html", "seo", "canonical"],
+ "authors": [
+  {
+   "name": "Lukas Erni",
+   "email": "le@kraftausdruck.ch"
+  }
+ ],
+ "support": {
+  "issues": "http://github.com/lerni/silverstripe-canonical"
+ },
+ "require": {
+  "silverstripe/cms": "^3.6"
+ },
+ "extra": {
+ },
+ "installer-name": "canonical"
+}

@@ -1,0 +1,12 @@
+---
+Name: canonical
+After:
+  - 'framework/*'
+  - 'cms/*'
+---
+#Page:
+#  extensions:
+#    - CanonicalExtension
+#SiteConfig:
+#  extensions:
+#    - CanonicalSiteConfigExtension

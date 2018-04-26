@@ -1,0 +1,5 @@
+de:
+  Canonical:
+    DomainInfo: 'Canonical-Domain wird global als Metatag ausgegeben. Sie sollte mit Protokoll und ohne Slashes am Ende erfasst werden.'
+    DomainExample: 'https://domain.tld'
+    LinkOverride: 'Canonical URL - eigene URL übersteuern'
