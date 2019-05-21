@@ -13,17 +13,20 @@ class CanonicalExtension extends DataExtension {
 
 	function getorsetCanonicalURL() {
 		$siteConfig = SiteConfig::current_site_config();
+		if (method_exists($this->owner, 'CanonicalLink')) {
+			// if something dynamic
+			$link = $this->owner->CanonicalLink();
+		}
 		if ($this->owner->CanonicalURL) {
 			// Canonical Tag is set on Page
     		$link = $this->owner->CanonicalURL;
-		} elseif ($siteConfig->CanonicalDomain != '') {
+		}
+		if (!isset($link) && $siteConfig->CanonicalDomain != '') {
 			// if a global CanonicalDomain is set
 			$canonicalBase = trim($siteConfig->CanonicalDomain, '/');
 			$link = $canonicalBase . $this->owner->Link();
-		} elseif (method_exists($this->owner, 'CanonicalLink')) {
-			// if something dynamic
-			$link = $this->owner->CanonicalLink();
-		} else {
+		}
+		if (!isset($link)) {
 			// default just link
 			$link = Director::protocolAndHost() . $this->owner->Link();
 		}
