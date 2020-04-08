@@ -5,10 +5,11 @@ class CanonicalExtension extends DataExtension {
 		"CanonicalURL" => "Text"
 	);
 
-    public function updateCMSFields(FieldList $fields) {
-		$MetaToggle = $fields->fieldByName("Root.Main.Metadata");
-		$MetaToggle->push($MetaCanonical = TextField::create("CanonicalURL", _t("Canonical.LinkOverride","Canonical URL - Override your own URL")));
-		$MetaCanonical->setAttribute('placeholder', $this->getorsetCanonicalURL());
+	public function updateCMSFields(FieldList $fields) {
+		if ($MetaToggle = $fields->fieldByName('Root.Main.Metadata')) {
+			$MetaToggle->push($MetaCanonical = TextField::create("CanonicalURL", _t("Canonical.LinkOverride","Canonical URL - Override your own URL")));
+			$MetaCanonical->setAttribute('placeholder', $this->getorsetCanonicalURL());
+		}
     }
 
 	function getorsetCanonicalURL() {
